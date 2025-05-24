@@ -1,8 +1,7 @@
 from collections import Counter
 
-def calcular_frecuencias(texto):
-    """Calcula la frecuencia de cada carácter en el texto"""
-    frecuencias = Counter(texto)
+def calcular_probabilidad(frecuencias):
+   
     total = sum(frecuencias.values())
     return sorted([(char, freq / total) for char, freq in frecuencias.items()],
                   key=lambda x: x[1], reverse=True)
@@ -31,10 +30,11 @@ def asignar_codigos(simbolos, prefijo='', codigos=None):
 
 def codificar_shannon_fano(texto):
     """Devuelve el texto codificado y los códigos binarios por carácter"""
-    simbolos = calcular_frecuencias(texto)
-    codigos = asignar_codigos(simbolos)
+    frecuencia_simbolos = Counter(texto)
+    prob_simbolos = calcular_probabilidad(frecuencia_simbolos)
+    codigos = asignar_codigos(prob_simbolos)
     texto_codificado = ''.join(codigos[char] for char in texto)
-    return texto_codificado, codigos
+    return texto_codificado, codigos, frecuencia_simbolos
 
 def decodificar_shannon_fano(texto_codificado, codigos):
     """Decodifica el texto binario utilizando los códigos de Shannon-Fano"""

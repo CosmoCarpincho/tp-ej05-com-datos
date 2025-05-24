@@ -21,16 +21,15 @@ Algoritmo de Huffman:
 
 (Pág 145 libro)
 """
-def construir_arbol_huffman(texto):
-    # Cuenta la frecuencia de cada caracter en el texto y devuelve un dic ej: {'a':5, 'b': 10}
-    frecuencias = Counter(texto)
+def construir_arbol_huffman(frecuencias_simbolos):
+
     monticulo = MonticuloMinimo() # es un arbol binario con dos restricciones
     # estructura: todos los niveles del árbol deben estar completos, a excepción del último que se completa desde izq
     # orden: el arbol debe estar ordenado por niveles asc o desc. En este caso es de orden mínimo. Padre menor que sus hijos.
     # Pagina del libro 187. LEER!!!
 
     # Crea un nodo por caracter y lo inserta en el montículo
-    for caracter, frecuencia in frecuencias.items():
+    for caracter, frecuencia in frecuencias_simbolos.items():
         monticulo.insertar(Nodo(caracter, frecuencia))
 
     # Combina los nodos de menor frecuencia hasta construir el árbol completo
@@ -62,11 +61,13 @@ def construir_codigos(raiz):
     return codigos
 
 def codificar_huffman(texto):
+     # Cuenta la frecuencia de cada caracter en el texto y devuelve un dic ej: {'a':5, 'b': 10}
+    frecuencias_simbolos = Counter(texto)
     # Construye el árbol de Huffman y genera el texto codificado
-    raiz = construir_arbol_huffman(texto)
+    raiz = construir_arbol_huffman(frecuencias_simbolos)
     codigos = construir_codigos(raiz)
     texto_codificado = ''.join(codigos[caracter] for caracter in texto)
-    return texto_codificado, codigos
+    return texto_codificado, codigos, frecuencias_simbolos
 
 def decodificar_huffman(texto_codificado, codigos):
     # Decodifica el texto binario usando los códigos generados

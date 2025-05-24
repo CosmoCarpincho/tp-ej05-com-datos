@@ -3,6 +3,9 @@ from algoritmos import (
     codificar_shannon_fano, decodificar_shannon_fano
 )
 
+# por si se necesitara frecuenca de decodificación.
+#from collections import Counter
+
 def menu():
     while True:
         print("\n--- Menú de Compresión ---")
@@ -15,19 +18,24 @@ def menu():
 
         if opcion == "1":
             texto = input("Ingrese el texto a codificar: ")
-            codificado, codigos = codificar_huffman(texto)
+            codificado, codigos, frecuencia_simbolos = codificar_huffman(texto)
             decodificado = decodificar_huffman(codificado, codigos)
+            # si se necesita frecuencia en decodificar ->
+            #frecuencias_simbolos_decodificado = Counter(decodificado)
             print(f"\nTexto codificado (Huffman):\n{codificado}")
             print(f"\nTexto decodificado:\n{decodificado}")
             print(f"\nCódigos asignados:\n{codigos}")
+            print(f"Frecuencia simbolos\n {frecuencia_simbolos}")
+            #print(f"Frecuancias simbolos dec\n {frecuencias_simbolos_decodificado}")
 
         elif opcion == "2":
             texto = input("Ingrese el texto a codificar: ")
-            codificado, codigos = codificar_shannon_fano(texto)
+            codificado, codigos, frecuencia_simbolos = codificar_shannon_fano(texto)
             decodificado = decodificar_shannon_fano(codificado, codigos)
             print(f"\nTexto codificado (Shannon-Fano):\n{codificado}")
             print(f"\nTexto decodificado:\n{decodificado}")
             print(f"\nCódigos asignados:\n{codigos}")
+            print(f"Frecuencia simbolos\n {frecuencia_simbolos}")
 
         elif opcion == "3":
             ruta = input("Ingrese la ruta del archivo de texto: ")
