@@ -3,6 +3,8 @@ import math
 
 texto01 = "EL CENTRO DE ESTUDIOS DESARROLLO Y TERRITORIO Y LA FACULTAD REGIONAL LA PLATA - UNIVERSIDAD TECNOLÓGICA NACIONAL, DE COMÚN ACUERDO, SUSCRIBEN ESTA CARTA DE INTENCIÓN, SOBRE LA BASE DE LAS CONSIDERACIONES Y PROPÓSITOS QUE SE EXPONEN A CONTINUACIÓN:"
 
+texto02 = "aaaaaaaaaaaaaaabbbbbbbbbbbcccccccdddd"
+
 def cargar_datos_simbolos(texto: str):
     conteo_simbolos = Counter(texto)
     total = sum(conteo_simbolos.values())
@@ -26,7 +28,7 @@ def cargar_datos_simbolos(texto: str):
     return cod
 
 
-a=cargar_datos_simbolos(texto01)
+a=cargar_datos_simbolos(texto02)
 print(a)
 print("fin")
 
@@ -56,8 +58,8 @@ def asignar_codigos(simbolos, prefijo='', codigos=None):
     if codigos is None:
         codigos = {}
     if len(simbolos) == 1:
-        codigo_final = prefijo or '0'
-        codigos[simbolos[0]['Caracter']] = codigo_final
+        codigo_final = prefijo or '0' # el or '0 es para cuando hay solo un caracter
+        codigos[simbolos[0]['Caracter']] = codigo_final # TODO: Revisar: ¿por qué uso lista de un solo elemento??? Aunque acá no tiene sentido, seguro es porque queria que se procesen ordenados.. se usa la lista en dividir simbolos
         simbolos[0]['Codigo'] = codigo_final
         return codigos
     izquierda, derecha = dividir_simbolos(simbolos)
