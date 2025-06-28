@@ -38,12 +38,13 @@ def dividir_simbolos(lista_simbolos):
     mejor_diferencia = float('inf')
     acumulado = 0
 
-    for i in range(len(lista_simbolos) - 1):  # No tiene sentido dividir en len - 1 y vacío
+    for i in range(len(lista_simbolos) - 1): 
         acumulado += lista_simbolos[i]['Probabilidad']
         diferencia = abs(mitad - acumulado)
+        # TODO: se puede optimizar. la primera vez que la diferencia es peor que la mejor diferencia se tendria que salir del bucle
         if diferencia < mejor_diferencia:
             mejor_diferencia = diferencia
-            mejor_idx = i
+            mejor_id = i
 
     return lista_simbolos[:mejor_id + 1], lista_simbolos[mejor_id + 1:]
 
