@@ -1,0 +1,9 @@
+{
+    "Algoritmo": "Shannon-Fano",
+    "Codigos": {
+        "H": "00",
+        "o": "01",
+        "l": "10",
+        "a": "11"
+    }
+}
