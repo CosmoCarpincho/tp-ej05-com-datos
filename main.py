@@ -1,3 +1,3 @@
-from gui import interfaz
+from gui import interfaz2
 
-interfaz.main()
+interfaz2.main()

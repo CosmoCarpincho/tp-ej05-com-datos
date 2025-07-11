@@ -33,7 +33,7 @@ def asignar_codigos(simbolos, prefijo='', codigos=None):
     return codigos
 
 
-def codificar_shannon_fano(datos_codificacion: dict):
+def codificar_shannon_fano(datos_codificacion: dict) -> dict:
     """Agrega al diccionario los resultados del algoritmo Shannon-Fano"""
     lista_simbolos = datos_codificacion['ListaSimbolos']
     codigos = asignar_codigos(lista_simbolos)

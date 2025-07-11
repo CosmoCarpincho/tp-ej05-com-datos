@@ -110,7 +110,7 @@ def guardar_codigos_codificacion(datos_codificacion: dict, algoritmo: str, ruta_
 
     datos_a_guardar = {
         "Algoritmo": codificacion["Algoritmo"],
-        "Codigos": codificacion["Codigos"]
+        "Códigos": codificacion["Códigos"]
     }
 
     with open(ruta_salida, 'w', encoding='utf-8') as archivo:
@@ -164,12 +164,12 @@ def cargar_codigos_codificacion(ruta_archivo: str) -> dict:
         with open(ruta_archivo, 'r', encoding='utf-8') as f:
             datos = json.load(f)
 
-        if "Algoritmo" not in datos or "Codigos" not in datos:
-            raise ValueError("Faltan claves requeridas: 'Algoritmo' y/o 'Codigos'")
+        if "Algoritmo" not in datos or "Códigos" not in datos:
+            raise ValueError("Faltan claves requeridas: 'Algoritmo' y/o 'Códigos'")
 
         return {
             "Algoritmo": datos["Algoritmo"],
-            "Codigos": datos["Codigos"]
+            "Códigos": datos["Códigos"]
         }
 
     except FileNotFoundError:
