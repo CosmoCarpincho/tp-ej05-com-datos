@@ -605,4 +605,8 @@ boton_salir = tk.Button(ventana_principal, text="Salir", font=("Arial", 11), fg=
 boton_salir.place(relx=1.0, rely=1.0, x=-20, y=-20, anchor="se")
 #----------------------------------------------------------
 
-ventana_principal.mainloop()
+def main():
+    ventana_principal.mainloop()
+
+if __name__ == "__main__":
+        main()
